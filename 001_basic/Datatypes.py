@@ -25,8 +25,11 @@
 
 
 #boolean : bool
-is_exist = True
-print(type(is_exist))
+# is_exist = True
+# print(type(is_exist))
 
 
-
+# a = "abc"
+# print(type(a))
+# k = int(a)
+# print(type(k))

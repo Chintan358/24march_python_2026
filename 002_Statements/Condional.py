@@ -65,9 +65,12 @@ c = 30
 # choice = int(input("enter choice : "))
 # match(choice):
 #     case 1 : print("Gujarati")
-#     case 2 : print("Hindi")
-#     case 3 : print("english")
-#     case _ : print("Invalid choice")
+#    
+# case 2 : print("Hindi")
+#    
+# case 3 : print("english")
+#    
+# case _ : print("Invalid choice")
 
 
 

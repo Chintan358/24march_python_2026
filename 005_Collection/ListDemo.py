@@ -91,3 +91,26 @@ s = ["python","java","php","android","react"]
 # print(s)
 
 
+l = [10,20,30,40,50,10,10]
+
+# print(l.count(10))
+# print(max(l))
+# print(min(l))
+# print(l.index(10))
+
+# for i in range(len(l)):
+#     if l[i] == 10:
+#      print(i, l[i])
+    
+    
+
+# l = [10,9,30,7,50,5]
+
+# k = ["abc" for i in l if i%2!=0]
+
+# print(k)
+
+l = [1,2,10,20]
+
+print(l[2][0])
+

@@ -17,3 +17,6 @@ t.sum(10,20,30)
 
 # sum(50,30)
 # square(10)
+
+from demo import test
+test.sample()

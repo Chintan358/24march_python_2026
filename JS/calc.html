@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+
+        const add = () => {
+
+            var a = Number(document.getElementById("a").value)
+            var b = Number(document.getElementById("b").value)
+            var r = document.getElementById("result")
+            r.innerHTML = a + b
+        }
+
+        const sub = () => {
+
+            var a = Number(document.getElementById("a").value)
+            var b = Number(document.getElementById("b").value)
+            var r = document.getElementById("result")
+            r.innerHTML = a - b
+        }
+
+        const mul = () => {
+
+            var a = Number(document.getElementById("a").value)
+            var b = Number(document.getElementById("b").value)
+            var r = document.getElementById("result")
+            r.innerHTML = a * b
+        }
+
+        const div = () => {
+
+            var a = Number(document.getElementById("a").value)
+            var b = Number(document.getElementById("b").value)
+            var r = document.getElementById("result")
+            r.innerHTML = a / b
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    <input type="text" id="a">
+    <input type="text" id="b">
+    <span id="result"></span>
+    <br>
+    <br>
+
+    <button onmouseover="add()">ADD</button>
+    <button onmouseover="sub()">SUB</button>
+    <button onmouseover="mul()">MUL</button>
+    <button onmouseover="div()">DIV</button>
+</body>
+
+</html>

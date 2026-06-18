@@ -1,25 +1,28 @@
-from turtle import *
-from colorsys import hsv_to_rgb
+# import math
 
-colormode(1.0)
-penup()
-setposition(0, 0)
-pendown()
-speed(0)
-bgcolor('black')
-pensize(3)
+# c = 50
+# h = 30
+# s = "100,150,180"
+# l = s.split(",")
+# v = []
 
-n = 100
-h = 0
+# for d in l:
+#     k = round(math.sqrt(2*c*float(d)/h))
+#     v.append(k)
 
-for j in range(120):        
-    for i in range(4):      
-        color(hsv_to_rgb(h, 1, 1))
-        h += 0.003
-        circle(40 + i * 5, 90)
-        forward(250)
-        left(90)
-    rt(10)
+# print(v)
 
-hideturtle()
-done()
+
+k = input("enter length")
+l = k.split(",")
+row = int(l[0])
+col = int(l[1])
+
+
+d = [[0 for j in range(col)] for i in range(row)]
+
+for i in range(row):
+    for j in range(col):
+       d[i][j]=i*j
+
+print(d)

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Student Information</h3>
+            </div>
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>sr.no</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Age</th>
+                                <th colspan="2">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {%for student in students%}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{student.id}}</td>
+                                <td>{{student.name}}</td>
+                                <td>{{student.email}}</td>
+                                <td>{{student.age}}</td>
+                                <td><a href="{%url 'delete'%}?id={{student.id}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="{%url 'retrive'%}?id={{student.id}}" class="btn btn-primary">Update</a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+
+
+                        </tbody>
+
+                    </table>
+
+                    <a href="{%url 'index'%}" class="btn btn-success">ADD Student</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+SQL : Structure query lang.
+RDBMS : realtional database management system
+************************************************
+DDL : data defination lang.
+create
+alter
+drop
+truncate
+
+create database collage;
+use collage;
+drop database collage;
+
+
+2 types of constrains on table : 
+1. datatype
+int
+varchar
+double
+date
+
+2. key
+unique
+notnull
+primary
+foreign key
+
+create table student(id int primary key, name varchar(20),email varchar(50));
+
+alter table student add column phone int;
+alter table student modify column phone varchar(20);
+alter table stduent drop column phone;
+alter table student rename to std;
+
+truncate std;
+
+drop table std;
+
+
+****************************************************
+DML : data manipulation lang.
+***************************
+insert
+update
+delete
+
+insert into student values(2,'yash','yash@gmail.com');
+insert into student(id,email) values(3,'sahil@gmail');
+update student set name='sahil' where id=3;
+delete from student where id=3;
+***************************************************
+DQL : data query lang.
+*********************************
+select
+
+select * from emp;
+select name,phone from emp;
+select distinct(dept) from emp;
+
+select * from emp where dept='IT';
+select * from emp where dept='IT' or dept='HR';
+select * from emp where dept='IT' and age>30;
+
+select * from emp where dept in('It','HR');
+select * from emp where dept not in('It');
+
+select * from emp where name like 'N%';
+select * from emp where name like '%l';
+select * from emp where name like '__i%';
+select * from emp where name like '%h%';
+
+select * from emp order by name;
+select * from emp order by name desc;
+
+select * from emp limit 5,2;
+
+select * from emp order by sal desc limit 1,1;
+
+
+select sum(sal) as total from emp;
+select avg(sal) from emp;
+select max(sal) from emp;
+select min(sal) from emp;
+select count(*) from emp;
+
+select * from emp where sal = (select max(sal) from emp);
+
+select * from emp where sal = (
+select max(sal) from emp where sal < (select max(sal) from emp));
+
+
+select  dept,max(sal)  from emp group by(dept) having max(sal)>50000;
+
+*************************************************************************
+TCL : transaction control lang.
+commit
+rollback
+savepoint
+
+start transaction;
+delete from emp where id=2;
+savepoint a;
+update emp set age=40 where id=3;
+commit;
+
+rollback to a;
+
+******************************************
+******************************************
+FOREIGN KEY :
+
+create table category(id int primary key auto_increment,
+					  name varchar(20));
+                      
+create table product(id int primary key auto_increment,
+					name varchar(20),
+					price double,
+                    qty int,
+                    cid int,foreign key(cid) references category(id));
+   
+JOINS : 
+inner join
+
+outer join
+-left
+-right
+-full
+
+
+select * from category join product on product.cid=category.id;
+select category.name,product.name from category join product on product.cid=category.id;
+select c.name,p.name from category c join product p on p.cid=c.id;
+
+
+select c.name,p.name from category c left join product p on p.cid=c.id;
+select c.name,p.name from category c right join product p on p.cid=c.id;
+
+
+select c.name,p.name from category c left join product p on p.cid=c.id union
+select c.name,p.name from category c right join product p on p.cid=c.id;
+
+
+**********************************************************************
+***************************************************************************
+View
+SP
+trigger
+
+
+
+
+
+
+
+
+
+
+

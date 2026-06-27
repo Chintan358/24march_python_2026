@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from myapp.models import *
+import os
 # Create your views here.
 def index(request):
     categories = Category.objects.all()
@@ -8,16 +9,47 @@ def index(request):
 def create(request):
     if request.method=='POST':
         data = request.POST
+        id = data.get("id")
         name = data.get("name")
         price = data.get("price")
         qty = data.get("qty")
         cat = data.get("cat")
         category = Category.objects.get(id=cat)
+        image = request.FILES.get("image")
         
-        Product.objects.create(name=name,price=price,qty=qty,category=category)
+        if id:
+            product = Product.objects.get(id=id)
+           
+            product.name = name
+            product.price = price
+            product.qty = qty
+            product.category = category
+            if request.FILES:
+                if product.image:
+                    os.remove(product.image.path)
+                product.image = image
+            product.save()
+            return redirect("display")
+        else:
+            Product.objects.create(name=name,price=price,qty=qty,category=category,image=image)
     
     return redirect("index")
 
 def display(request):
     products = Product.objects.all()
     return render(request,"display.html",{"products":products})
+
+def destroy(request):
+    id = request.GET['id']
+    product = Product.objects.get(id=id)
+    os.remove(product.image.path)
+    product.delete()
+    return redirect("display")
+
+
+def retrive(request):
+    id = request.GET['id']
+    product = Product.objects.get(id=id)
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    return render(request,"display.html",{"pro":product,"categories":categories,"products":products})

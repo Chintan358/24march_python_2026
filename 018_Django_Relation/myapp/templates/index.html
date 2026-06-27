@@ -22,24 +22,35 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{%url 'create'%}" method="post">
+
+                        <form action="{%url 'create'%}" method="post" enctype="multipart/form-data">
+
                             {%csrf_token%}
+                            <input type="hidden" name="id" value="{{product.id}}">
                             <!-- Product Name -->
                             <div class="mb-3">
                                 <label class="form-label">Product Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Name" name="name">
+                                <input type="text" class="form-control" placeholder="Enter Product Name" name="name"
+                                    value="{{product.name}}">
                             </div>
 
                             <!-- Price -->
                             <div class="mb-3">
                                 <label class="form-label">Price</label>
-                                <input type="number" class="form-control" placeholder="Enter Price" name="price">
+                                <input type="number" class="form-control" placeholder="Enter Price" name="price"
+                                    value="{{product.price}}">
                             </div>
 
                             <!-- Quantity -->
                             <div class="mb-3">
                                 <label class="form-label">Quantity</label>
-                                <input type="number" class="form-control" placeholder="Enter Quantity" name="qty">
+                                <input type="number" class="form-control" placeholder="Enter Quantity" name="qty"
+                                    value="{{product.qty}}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" name="image">
                             </div>
 
                             <!-- Category -->
@@ -48,7 +59,9 @@
                                 <select class="form-select" name="cat">
                                     <option selected disabled>Select Category</option>
                                     {%for cat in categories%}
-                                    <option value="{{cat.id}}">{{cat.name}}</option>
+                                    <option value="{{cat.id}}">
+
+                                        {{cat.name}}</option>
                                     {%endfor%}
                                 </select>
                             </div>

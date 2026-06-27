@@ -1,3 +1,4 @@
+ 
 SQL : Structure query lang.
 RDBMS : realtional database management system
 ************************************************

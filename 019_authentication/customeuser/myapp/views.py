@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from myapp.models import *
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 
@@ -12,7 +11,6 @@ def index(request):
         password = data.get("password")
         
         user = authenticate(request,phone=phone,password=password)
-        print(user.first_name)
         if user is not None:
             login(request,user)
             return redirect("home")
@@ -47,7 +45,7 @@ def home(request):
 
 def user_logout(request):
     logout(request)
-    return render(request,"index.html")
+    return redirect("index")
 
 
 def student(request):

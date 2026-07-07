@@ -24,6 +24,12 @@
             })
         }
 
+        const search = (q) => {
+            $.get("search", { q }, function (rt) {
+                $("#search_data").html(rt)
+            })
+        }
+
     </script>
 
 
@@ -39,7 +45,7 @@
     <hr>
     <br>
 
-    <input type="text">
+    <input type="text" onkeyup="search(value)">
     <div id="search_data"></div>
 
 </body>

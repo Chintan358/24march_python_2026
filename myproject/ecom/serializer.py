@@ -17,6 +17,10 @@ class ProductSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         if attrs['qty']<1:
             raise serializers.ValidationError({"qty":"Qty must not be 0"})
-        
         return attrs
+    
+    def to_representation(self, instance):
+        resp =  super().to_representation(instance)
+        resp['category'] = CategorySerilaizer(instance.category).data
+        return resp
             

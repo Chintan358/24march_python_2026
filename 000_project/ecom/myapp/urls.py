@@ -16,6 +16,9 @@ router.register(
     basename="user"
 )
 
+router.register("products",ProductViewSet,basename="product")
+router.register("addresses",AddressViewSet,basename="address")
 urlpatterns = [
       path("", include(router.urls)),
+      path("carts",CartViewSet.as_view())
 ]

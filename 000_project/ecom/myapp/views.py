@@ -3,9 +3,11 @@ from rest_framework import viewsets
 from myapp.serializer import *
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
-from rest_framework.decorators import api_view,APIView
+from rest_framework.decorators import api_view,APIView,permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+import razorpay
+import random
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -135,4 +137,35 @@ class CartViewSet(APIView):
         )
        
         
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def payment(request):
+    amount = request.data['amount']
+    id = "rzp_test_TOqCWmcFFPZQOB"
+    secret="Hhm19s6HIdJkH3Huv8qWHZcd"
+
+    client = razorpay.Client(auth=(id,secret))
+
+    data = { "amount": amount*100, "currency": "INR", "receipt": "order_rcptid_11" }
+    payment = client.order.create(data=data) # Amount is in currency subunits.
+    print(payment)
+    return Response(payment)   
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def confirmorder(request):
+    data = request.data
+    transaction_id = data.get('transaction_id')
+    payment_method = data.get('payment_method')
     
+    user = request.user
+    address = Address.objects.get(user=user,is_default=True)
+    carts = Cart.objects.get(user=user)
+    order_number=f"ORDER_{random.randint(0000,9999)}"
+    total_amount =  carts.total_amount
+    
+    # order = Order.
+    
+    # items = carts.items.all()
+    # for item in items:
+        

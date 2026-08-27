@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'myapp'
+    'myapp',
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -56,8 +57,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }
 
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Ecommerce API',
+    'DESCRIPTION': 'API documentation for Ecom plactform',
+    'VERSION': '1.0.0',
+}
 from datetime import timedelta
 
 SIMPLE_JWT = {

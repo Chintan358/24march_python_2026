@@ -22,5 +22,6 @@ urlpatterns = [
       path("", include(router.urls)),
       path("carts",CartViewSet.as_view()),
       path("payment",payment,name="payment"),
-      path("confirmorder",confirmorder,name="confirmorder")
+      path("confirmorder",confirmorder,name="confirmorder"),
+      path("myorders",myorders,name="myorders")
 ] 

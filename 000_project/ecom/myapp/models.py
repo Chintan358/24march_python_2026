@@ -382,7 +382,7 @@ class Payment(models.Model):
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
-        default=Status.PENDING
+        default=Status.SUCCESS
     )
 
     created_at = models.DateTimeField(

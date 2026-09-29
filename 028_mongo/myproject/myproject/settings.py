@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)z2%m68f7r80bpm!z49d95z(*(3tuzyp^8zd9y=1nmzhbr8+%l'
+SECRET_KEY = 'django-insecure-i#s!029=&cf^bka$r1&hfj=!gve58+8b+pm^g^zf2qka(3-v!x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+DEFAULT_AUTO_FIELD = "django_mongodb_backend.fields.ObjectIdAutoField"
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+     "myapp.apps.MyappConfig",
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,9 +75,14 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    "default": {
+        "ENGINE": "django_mongodb_backend",
+        "HOST": "mongodb+srv://chintantops_db_user:test@cluster0.sor54ut.mongodb.net/?appName=Cluster0",
+        "NAME": "tops",
     }
 }
 
@@ -116,20 +122,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-# Host and Port details for your provider (Gmail example)
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
-# Your authentication credentials
-EMAIL_HOST_USER = 'chintan.tops@gmail.com'
-# IMPORTANT: Use an App Password here, NOT your main account password
-EMAIL_HOST_PASSWORD = 'lwjq iqsc vjfi qsgd' 
-
-# Default sender email displayed to recipients
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

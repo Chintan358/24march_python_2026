@@ -28,31 +28,30 @@
 
     <div class="login-box">
 
-        <h2 class="text-center mb-4">Login</h2>
+        <h2 class="text-center mb-4">OTP varification</h2>
         <span class="text-danger">{{err}}</span>
-        <form method="post">
+        <span class="text-success">{{success}}</span>
+        <form action="{%url 'otpVarification'%}" method="get">
             {% csrf_token %}
 
             <div class="mb-3">
-                <label class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
+                <label class="form-label">OTP</label>
+                <input type="text" name="otp" class="form-control" placeholder="Enter OTP" required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
-            </div>
 
-            <button class="btn btn-primary w-100">
-                Login
-            </button>
+
+            <input type="submit" class="btn btn-primary w-100" name="submit" value="Varify" />
+
+
+
 
         </form>
 
-        <a href="{%url 'forgotpass'%}">Forgrt password?</a>
+
         <p class="text-center mt-3">
-            Don't have an account?
-            <a href="{% url 'reg' %}">Register Here</a>
+
+            <a href="{% url 'index' %}">Login Here</a>
         </p>
 
     </div>
